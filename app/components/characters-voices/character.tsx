@@ -1,21 +1,16 @@
 import { lazy, useState } from 'react'
-
-
-import { getCharacterImg } from '../Manga/title-info/characters'
 import { CharacterFull } from '~/shared/api/jikan/generated'
 import { usePersoneStore } from '~/store/characters-people'
+
+import { getCharacterImg } from '../Manga/title-info/characters'
 import DialogAnime from './dialog-anime'
 import DialogManga from './dialog-manga'
 
-
-// const DialogAnime = lazy(() => import('./dialog-anime'))
-// const DialogManga = lazy(() => import('./dialog-manga'))
 type Props = {
   character?: CharacterFull
   handleClose: () => void
 }
 function Characters({ character, handleClose }: Props) {
-  // const resetPersone = usePersoneStore().resetPersone
   const setPersone = usePersoneStore().setPersone
 
   const [animeName, setAnimeName] = useState('')

@@ -1,25 +1,35 @@
-
-
+import { useEffect, useRef } from 'react'
+import { ScrollRestoration, useParams } from '@remix-run/react'
 import { aniwatchApi } from '~/hooks/api/aniwatch/anime'
+
 import { Badge } from '../../ui/badge'
 import Characters from './characters'
 import AnimeRelation from './relation'
 import AnimeSeasons from './seasons'
-import { useParams } from '@remix-run/react'
 
 // type Props = {}
 
 function AnimeTitleInfo() {
   const { id } = useParams()
   const { data } = aniwatchApi.useAnimeInfoById({ id: id as string })
+  const scrollContainerRef = useRef<HTMLDivElement>(null)
 
   const anime = data?.data.anime
   const relatedAnime = data?.data.relatedAnimes
   const seasons = data?.data.seasons
 
+  useEffect(() => {
+    if (scrollContainerRef.current) {
+      scrollContainerRef.current.scrollTop = 0
+    }
+  }, [id])
+
   return (
     <>
-      <section className="filterBar order-2 flex w-2/5 flex-col items-start overflow-hidden overflow-y-scroll border border-green-400 px-[2px] text-white">
+      <section
+        ref={scrollContainerRef}
+        className="filterBar order-2 flex w-2/5 flex-col items-start overflow-hidden overflow-y-scroll border border-green-400 px-[2px] text-white"
+      >
         <div className="flex w-full flex-col items-center justify-center">
           <img
             className="relative z-10 h-[440px] w-[310px]"

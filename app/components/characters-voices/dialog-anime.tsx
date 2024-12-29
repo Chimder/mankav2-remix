@@ -1,8 +1,8 @@
-import { useNavigate } from "@remix-run/react"
-import { aniwatchApi } from "~/hooks/api/aniwatch/anime"
-import { PATH } from "~/shared/constants/path-constants"
-import { Dialog, DialogContent } from "../ui/dialog"
+import { Link, useNavigate } from '@remix-run/react'
+import { aniwatchApi } from '~/hooks/api/aniwatch/anime'
+import { PATH } from '~/shared/constants/path-constants'
 
+import { Dialog, DialogContent } from '../ui/dialog'
 
 type Props = {
   name: string
@@ -20,8 +20,8 @@ export default function DialogAnime({
   const { data } = aniwatchApi.useAnimeByName({ name })
 
   const handleAnimeClick = (animeId: string) => {
-    handleClose()
-    navigate(`${PATH.ANIME.getTitlePath(animeId)}`)
+    // navigate(`${PATH.ANIME.getTitlePath(animeId)}`)
+    // handleClose()
   }
   if (!data) return null
   return (
@@ -30,16 +30,16 @@ export default function DialogAnime({
         {/* <DialogTitle></DialogTitle> */}
         <div className="flex justify-evenly">
           {data?.map(anime => (
-            <div
+            <Link
+              to={PATH.ANIME.getTitlePath(anime.id)}
               key={`${anime.id}${anime.name}new`}
-              onClick={() => handleAnimeClick(anime.id)}
               className="h-40 w-32"
             >
               <div className="mb-2 h-40 w-32 overflow-hidden rounded-lg">
                 <img src={anime.poster} alt="" />
               </div>
               <h1>{anime.name}</h1>
-            </div>
+            </Link>
           ))}
         </div>
       </DialogContent>

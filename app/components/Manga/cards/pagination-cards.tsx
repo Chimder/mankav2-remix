@@ -69,7 +69,7 @@ export const PaginationButtons = ({
             ) : (
               <button
                 className={cn(
-                  'mx-1 rounded-lg bg-background px-4 py-2 text-white hover:bg-orange-700',
+                  'mx-1 rounded-lg bg-background bg-slate-400 px-4 py-2 text-white hover:bg-orange-700',
                   page == currentPage && '!bg-orange-400',
                 )}
                 key={page}

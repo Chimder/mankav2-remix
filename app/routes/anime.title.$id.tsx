@@ -1,5 +1,5 @@
 import { HeadersFunction, json, LoaderFunctionArgs } from '@remix-run/node'
-import { useLoaderData } from '@remix-run/react'
+import { ScrollRestoration, useLoaderData } from '@remix-run/react'
 import {
   dehydrate,
   HydrationBoundary,

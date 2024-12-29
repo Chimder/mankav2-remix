@@ -2,6 +2,7 @@ import path from 'path'
 import { vitePlugin as remix } from '@remix-run/dev'
 import { vercelPreset } from '@vercel/remix/vite'
 import { defineConfig } from 'vite'
+import babel from 'vite-plugin-babel'
 import tsconfigPaths from 'vite-tsconfig-paths'
 
 declare module '@remix-run/node' {
@@ -21,6 +22,13 @@ export default defineConfig({
         v3_throwAbortReason: true,
         v3_singleFetch: true,
         v3_lazyRouteDiscovery: true,
+      },
+    }),
+    babel({
+      filter: /\.[jt]sx?$/,
+      babelConfig: {
+        presets: ['@babel/preset-typescript'],
+        plugins: [['babel-plugin-react-compiler']],
       },
     }),
     tsconfigPaths(),

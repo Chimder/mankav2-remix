@@ -1,4 +1,3 @@
-/* eslint-disable no-extra-semi */
 import { create } from 'zustand'
 import { immer } from 'zustand/middleware/immer'
 
@@ -7,25 +6,26 @@ import { createSelectors } from './create-Selectors'
 export type Persone = {
   id?: number
   type?: 'character' | 'voices'
-  // chaptersLanguage?: string
 }
 
-export type PersoneAction = Persone & {
-  setPersone: (id: number, type: 'character' | 'voices') => void
+export type PersoneAction = {
+  setPersone: (id?: number, type?: 'character' | 'voices') => void
   resetPersone: () => void
 }
-export const personeStore = create<PersoneAction>()(
-  immer((set, get) => ({
+export const personeStore = create<Persone & PersoneAction>()(
+  immer(set => ({
     id: undefined,
     type: 'character',
-    setPersone: async (id, type) => {
-      await set(state => {
-        ;(state.id = id), (state.type = type)
+    setPersone: (id, type) => {
+      set(state => {
+        state.id = id
+        state.type = type
       })
     },
-    resetPersone: async () => {
-      await set(state => {
-        ;(state.id = undefined), (state.type = 'character')
+    resetPersone: () => {
+      set(state => {
+        state.id = undefined
+        state.type = 'character'
       })
     },
   })),

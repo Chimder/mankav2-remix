@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { useSearchParams } from '@remix-run/react'
 import DialogCharactersPeople from '~/components/characters-voices/dialog'
 import {
@@ -31,10 +31,19 @@ const Characters = () => {
   const setPersone = usePersoneStore().setPersone
 
   const [isOpen, setIsOpen] = useState(false)
+
   async function handlePerson(id: number) {
+    const { id: currentId, type } = usePersoneStore.getState()
+    if (currentId === id && type === 'character') {
+      return
+    }
     await setPersone(id, 'character')
     setIsOpen(true)
   }
+  // async function handlePerson(id: number) {
+  //   await setPersone(id, 'character')
+  //   setIsOpen(true)
+  // }
 
   const firstSixCharacters = characters?.data?.slice(0, 6) || []
   const restCharacters = characters?.data?.slice(6) || []
@@ -71,6 +80,7 @@ const Characters = () => {
             </div>
           ))}
         </ul>
+
         <DialogCharactersPeople setIsOpen={setIsOpen} isOpen={isOpen} />
 
         {restCharacters.length > 0 && (
