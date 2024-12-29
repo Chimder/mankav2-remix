@@ -47,18 +47,9 @@ export function Layout({ children }: { children: React.ReactNode }) {
     </html>
   )
 }
+export const queryClient = new QueryClient()
 
 export default function App() {
-  const [queryClient] = useState(
-    () =>
-      new QueryClient({
-        defaultOptions: {
-          queries: {
-            staleTime: 60 * 1000,
-          },
-        },
-      }),
-  )
   return (
     <QueryClientProvider client={queryClient}>
       <MainLayout />

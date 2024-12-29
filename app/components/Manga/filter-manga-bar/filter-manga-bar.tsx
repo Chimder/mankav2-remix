@@ -1,11 +1,12 @@
+import { mangaApi } from '~/hooks/api/mangadex/manga'
+import { tagsApi } from '~/hooks/api/mangadex/tag'
+import { queryClient } from '~/root'
+import { filterConstants } from '~/shared/constants/filters'
 import { useFilterStore } from '~/store/filter-slice'
+
 import { Separator } from '../../ui/separator'
 import AccordionSection from './accordion'
 import AccordionSortBy from './accordion-sort-by'
-import { tagsApi } from '~/hooks/api/mangadex/tag'
-import { filterConstants } from '~/shared/constants/filters'
-import { QueryClient } from '@tanstack/react-query'
-import { mangaApi } from '~/hooks/api/mangadex/manga'
 
 export const FilterMangaBar = () => {
   const reset = useFilterStore().reset
@@ -13,15 +14,14 @@ export const FilterMangaBar = () => {
   const { data: tags } = tagsApi.useMangaTags()
 
   const Search = async (e: React.MouseEvent<HTMLDivElement>) => {
-     const queryClient = new QueryClient()
     e.preventDefault()
+    console.log('RESERTT')
     await queryClient.resetQueries({
       queryKey: [mangaApi.baseKey],
     })
   }
 
   const resetSearch = async () => {
-     const queryClient = new QueryClient()
     await reset()
     await queryClient.resetQueries({
       queryKey: [mangaApi.baseKey],

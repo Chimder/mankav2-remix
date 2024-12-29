@@ -27,7 +27,7 @@ export const getMangaImg = (id?: string, manga?: Manga) => {
       ?.fileName
   }`
 }
-const Info = (props: Props) => {
+const Info = () => {
   const { id: mangaId } = useParams()
   const { data: manga } =  mangaApi.useMangaByID(mangaId)
 

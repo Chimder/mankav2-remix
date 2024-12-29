@@ -48,6 +48,7 @@ const Characters = () => {
   return (
     <div className="center m-1 flex-col border-1 border-yellow-800">
       <h1 className="text-lg text-yellow-700">Characters</h1>
+      <div>manga Form name{manga?.status}</div>
       <div className="">
         <ul className="center flex flex-wrap gap-2">
           {firstSixCharacters.map(character => (
