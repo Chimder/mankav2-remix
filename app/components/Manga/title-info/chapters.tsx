@@ -118,7 +118,7 @@ const Chapters = () => {
         </ul>
       </div>
 
-      <div className="sticky bottom-0 left-0 right-0 z-10 bg-background/80 backdrop-blur-sm">
+      <div className="sticky bottom-0 left-0 right-0 z-10  backdrop-blur-sm">
         <PaginationButtons
           key="pagin-title"
           currentPage={currentPage}

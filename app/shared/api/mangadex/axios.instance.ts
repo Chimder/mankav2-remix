@@ -4,7 +4,7 @@ const URL = import.meta.env.VITE_IMG_PROXY!
 
 export const AXIOS_INSTANCE = Axios.create({
   baseURL: URL,
-  // baseURL: '/api/proxyApi?url=',
+  // baseURL: '/api/proxy?url=',
   headers: {
     'Content-Type': 'application/json',
     Accept: '*/*',

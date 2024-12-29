@@ -13,6 +13,7 @@ declare module '@remix-run/node' {
 export default defineConfig({
   plugins: [
     remix({
+      ssr: true,
       presets: [vercelPreset()],
       future: {
         v3_fetcherPersist: true,
@@ -30,6 +31,6 @@ export default defineConfig({
     },
   },
   server: {
-    port: 3000,
+    port: 5000,
   },
 })

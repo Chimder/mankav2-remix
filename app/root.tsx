@@ -1,3 +1,4 @@
+import { useState } from 'react'
 import type { LinksFunction } from '@remix-run/node'
 import {
   Links,
@@ -6,13 +7,14 @@ import {
   Scripts,
   ScrollRestoration,
 } from '@remix-run/react'
-
-import './styles/index.css'
-
-import { useState } from 'react'
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 
 import MainLayout from './components/layouts/main-layouts'
+
+import './styles/globals.css'
+import './styles/index.css'
+import './styles/vars.css'
+import './styles/normalize.css'
 
 export const links: LinksFunction = () => [
   { rel: 'preconnect', href: 'https://fonts.googleapis.com' },

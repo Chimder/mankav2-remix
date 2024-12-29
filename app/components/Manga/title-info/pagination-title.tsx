@@ -1,8 +1,6 @@
 import { useNavigate, useParams, useSearchParams } from '@remix-run/react'
 import { OffsetFilterTitle } from '~/shared/constants/filters'
 
-import { Button } from '../../ui/button'
-import { getFirstTitle } from '../cards/cards-list'
 import { PATH } from '~/shared/constants/path-constants'
 import { cn } from '~/shared/lib/tailwind'
 
@@ -77,7 +75,7 @@ export const PaginationButtons = ({
             ) : (
               <button
                 className={cn(
-                  'mx-1 rounded-lg bg-background px-4 py-2 text-white hover:bg-orange-700',
+                  'mx-1 rounded-lg bg-background px-4 py-2 bg-slate-400 text-white hover:bg-orange-700',
                   page == currentPage && '!bg-orange-400',
                 )}
                 key={page}
