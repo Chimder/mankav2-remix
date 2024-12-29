@@ -1,13 +1,13 @@
 // import { Manga } from '@/shared/api/mangadex/generated'
+import { useParams } from '@remix-run/react'
+import { mangaApi } from '~/hooks/api/mangadex/manga'
+import { Manga } from '~/shared/api/mangadex/generated'
 import dayjs from 'dayjs'
 
 // import { mangaApi } from '@/hooks/api/mangadex/manga'
 
 import Characters from './characters'
 import Relation from './relation'
-import { Manga } from '~/shared/api/mangadex/generated'
-import { useParams } from '@remix-run/react'
-import { mangaApi } from '~/hooks/api/mangadex/manga'
 
 type Props = {}
 
@@ -25,11 +25,11 @@ export const getMangaImg = (id?: string, manga?: Manga) => {
   return `${import.meta.env.VITE_IMG_PROXY!}/img/mangadex.org/covers/${id}/${
     manga.relationships.find(obj => obj.type === 'cover_art')?.attributes
       ?.fileName
-  }`
+  }.512.jpg`
 }
 const Info = () => {
   const { id: mangaId } = useParams()
-  const { data: manga } =  mangaApi.useMangaByID(mangaId)
+  const { data: manga } = mangaApi.useMangaByID(mangaId)
 
   return (
     <section className="">

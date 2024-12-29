@@ -40,7 +40,7 @@ const Relation = () => {
             <div className="mb-2 h-40 w-32 overflow-hidden rounded-lg">
               <img
                 className="h-full w-full object-cover"
-                src={`${import.meta.env.VITE_IMG_PROXY!}/img/mangadex.org/covers/${manga.id}/${manga?.relationships?.find(obj => obj.type === 'cover_art')?.attributes?.fileName}`}
+                src={`${import.meta.env.VITE_IMG_PROXY!}/img/mangadex.org/covers/${manga.id}/${manga?.relationships?.find(obj => obj.type === 'cover_art')?.attributes?.fileName}.256.jpg`}
                 loading="lazy"
                 alt={getFirstTitle(manga.attributes?.title)}
               />

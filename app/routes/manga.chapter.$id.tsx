@@ -1,31 +1,30 @@
-import { Link, useParams, useSearchParams } from "@remix-run/react";
-import { ReactElement, useRef } from "react";
-import ExternalChapter from "~/components/external-chapter";
-import ModalChapter from "~/components/Manga/chapters/modal-chapter";
-import { chapterApi } from "~/hooks/api/mangadex/chapter";
-import useAggregateChapter from "~/hooks/use-aggregate-chapter";
-import usePageTrack from "~/hooks/use-chapter-tracker";
-import { PATH } from "~/shared/constants/path-constants";
+import { ReactElement, useRef } from 'react'
+import { Link, useParams, useSearchParams } from '@remix-run/react'
+import ExternalChapter from '~/components/external-chapter'
+import ModalChapter from '~/components/Manga/chapters/modal-chapter'
+import { chapterApi } from '~/hooks/api/mangadex/chapter'
+import useAggregateChapter from '~/hooks/use-aggregate-chapter'
+import usePageTrack from '~/hooks/use-chapter-tracker'
+import { PATH } from '~/shared/constants/path-constants'
 
-
- const MangaChapter = () => {
-  const [searchParams] = useSearchParams();
-  const { id } = useParams();
-  const lang = searchParams.get("lang") as string;
-  const manga = searchParams.get("manga") as string;
-  const name = searchParams.get("name") as string;
+const MangaChapter = () => {
+  const [searchParams] = useSearchParams()
+  const { id } = useParams()
+  const lang = searchParams.get('lang') as string
+  const manga = searchParams.get('manga') as string
+  const name = searchParams.get('name') as string
 
   const { data: chapters, isFetching } = chapterApi.useMangaChapterByID(
-    id as string
-  );
-  const { data: chapterData } = chapterApi.useMangaChapters(id as string);
-  const { flatAggregate, nextChapter } = useAggregateChapter();
+    id as string,
+  )
+  const { data: chapterData } = chapterApi.useMangaChapters(id as string)
+  const { flatAggregate, nextChapter } = useAggregateChapter()
 
-  const imageRefs = useRef<(HTMLDivElement | null)[]>([]);
-  const externalUrl = chapterData?.data?.attributes?.externalUrl;
-  const totalPages = chapters?.chapter?.data?.length || 0;
+  const imageRefs = useRef<(HTMLDivElement | null)[]>([])
+  const externalUrl = chapterData?.data?.attributes?.externalUrl
+  const totalPages = chapters?.chapter?.data?.length || 0
 
-  const { currentPage, setCurrentPage } = usePageTrack(imageRefs, totalPages);
+  const { currentPage, setCurrentPage } = usePageTrack(imageRefs, totalPages)
 
   return (
     <div className="center relative w-full flex-col bg-black">
@@ -37,8 +36,8 @@ import { PATH } from "~/shared/constants/path-constants";
           <div key={chapter}>
             <div
               className="flex max-w-[1200px] flex-col items-center px-0 py-[14px]"
-              ref={(el) => {
-                imageRefs.current[index] = el;
+              ref={el => {
+                imageRefs.current[index] = el
               }}
             >
               {/* {!imageLoaded[index] && (
@@ -53,7 +52,7 @@ import { PATH } from "~/shared/constants/path-constants";
                 <img
                   src={`${import.meta.env
                     .VITE_IMG_PROXY!}/img/${encodeURIComponent(
-                    `${chapters.baseUrl}/data/${chapters.chapter?.hash}/${chapter}`
+                    `${chapters.baseUrl}/data/${chapters.chapter?.hash}/${chapter}`,
                   )}`}
                   width={1100}
                   height={1100}
@@ -68,7 +67,7 @@ import { PATH } from "~/shared/constants/path-constants";
           </div>
         ))
       ) : (
-        <ExternalChapter key={1} externalUrl={""} />
+        <ExternalChapter key={1} externalUrl={''} />
       )}
 
       {chapters?.chapter?.data && chapters.chapter.data.length > 0 && (
@@ -77,7 +76,7 @@ import { PATH } from "~/shared/constants/path-constants";
             <Link
               className="center flex h-10 w-1/2 rounded-sm border-2 border-blue-950 py-[34px] text-white hover:border-blue-700"
               to={`${PATH.MANGA.getChapterPath(
-                nextChapter.id
+                nextChapter.id,
               )}?manga=${manga}&lang=${lang}&name=${name}`}
             >
               Next
@@ -93,8 +92,8 @@ import { PATH } from "~/shared/constants/path-constants";
         </div>
       )}
     </div>
-  );
-};
+  )
+}
 
 // MangaChapter.getLayout = function getLayout(page: ReactElement) {
 //   return <>{page}</>;

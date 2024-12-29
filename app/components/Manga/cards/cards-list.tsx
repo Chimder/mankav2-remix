@@ -47,7 +47,7 @@ const CardsList = ({ mangas, isFetching }: Props) => {
                 >
                   <img
                     className="h-[280px] w-[260px] rounded-xl object-cover"
-                    src={`${import.meta.env.VITE_IMG_PROXY}/img/mangadex.org/covers/${manga.id}/${manga.relationships?.find(obj => obj.type === 'cover_art')?.attributes?.fileName}`}
+                    src={`${import.meta.env.VITE_IMG_PROXY}/img/mangadex.org/covers/${manga.id}/${manga.relationships?.find(obj => obj.type === 'cover_art')?.attributes?.fileName}.256.jpg`}
                     width={260}
                     height={280}
                     loading="lazy"
@@ -66,7 +66,7 @@ const CardsList = ({ mangas, isFetching }: Props) => {
                 >
                   <img
                     className="h-[180px] w-[140px] object-cover"
-                    src={`${import.meta.env.VITE_IMG_PROXY}/img/mangadex.org/covers/${manga.id}/${manga.relationships?.find(obj => obj.type === 'cover_art')?.attributes?.fileName}`}
+                    src={`${import.meta.env.VITE_IMG_PROXY}/img/mangadex.org/covers/${manga.id}/${manga.relationships?.find(obj => obj.type === 'cover_art')?.attributes?.fileName}.256.jpg`}
                     width={140}
                     height={180}
                     loading="lazy"
