@@ -15,7 +15,7 @@ export type CardSwitcherAction = Card & {
 export const CardSwitcherStore = create<CardSwitcherAction>()(
   persist(
     immer(set => ({
-      type: undefined,
+      type: 'boxes',
       setCardSwitcher: text => {
         set(state => {
           state.type = text

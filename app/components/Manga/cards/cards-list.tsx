@@ -38,7 +38,7 @@ const CardsList = ({ mangas, isFetching }: Props) => {
                 key={index}
               ></Skeleton>
             ))
-          : cardView && cardView == 'boxes'
+          : cardView == 'boxes'
             ? mangas?.data?.map(manga => (
                 <Link
                   className="flex w-[260px] flex-col overflow-hidden rounded-xl pb-1 text-white hover:outline hover:outline-1 hover:outline-red-400"
@@ -58,8 +58,7 @@ const CardsList = ({ mangas, isFetching }: Props) => {
                   </div>
                 </Link>
               ))
-            : cardView &&
-              mangas?.data?.map(manga => (
+            : mangas?.data?.map(manga => (
                 <Link
                   className="mt-1 flex overflow-hidden rounded-lg border-gray-500 text-white hover:outline hover:outline-1 hover:outline-red-400"
                   to={`${PATH.MANGA.getTitlePath(manga.id)}?name=${getFirstTitle(manga.attributes?.title)}`}
@@ -81,13 +80,13 @@ const CardsList = ({ mangas, isFetching }: Props) => {
                     <div className="mr-[2px] flex flex-wrap pb-[5px]">
                       {manga.attributes?.tags?.slice(0, 4)?.map(tag => (
                         <div
-                          className="rounded-4xl border rounded-xl border-gray-400 bg-transparent p-1 text-sm"
+                          className="rounded-4xl rounded-xl border border-gray-400 bg-transparent p-1 text-sm"
                           key={tag.id}
                         >
                           {tag.attributes?.name?.en}
                         </div>
                       ))}
-                      <div className="rounded-4xl border-2 border-gray-400 rounded-xl bg-transparent p-1 text-sm">
+                      <div className="rounded-4xl rounded-xl border-2 border-gray-400 bg-transparent p-1 text-sm">
                         {manga.attributes?.status}
                       </div>
                     </div>
