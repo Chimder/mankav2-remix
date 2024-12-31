@@ -31,9 +31,9 @@
 
 .skeletonBoxes {
   width: 100%;
-  max-width: 280px;
-  max-height: 310px;
-  aspect-ratio: 280 / 310;
+  max-width: 260px;
+  max-height: 280px;
+  aspect-ratio: 260 / 280;
 }
 
 .skeletonTwo {

@@ -29,8 +29,8 @@ const CardsList = ({ mangas, isFetching }: Props) => {
   return (
     <div className="h-full">
       <ul className={cn(cardView)}>
-        {isFetching
-          ? Array.from({ length: 10 }).map((_, index) => (
+        {isFetching && cardView
+          ? Array.from({ length: 20 }).map((_, index) => (
               <Skeleton
                 className={
                   cardView == 'boxes' ? 'skeletonBoxes' : 'skeletonTwo'
@@ -38,10 +38,10 @@ const CardsList = ({ mangas, isFetching }: Props) => {
                 key={index}
               ></Skeleton>
             ))
-          : cardView == 'boxes'
+          : cardView && cardView == 'boxes'
             ? mangas?.data?.map(manga => (
                 <Link
-                  className="flex w-[260px] flex-col overflow-hidden rounded-xl border-1 border-red-200 pb-1 text-white hover:border-red-400"
+                  className="flex w-[260px] flex-col overflow-hidden rounded-xl pb-1 text-white hover:outline hover:outline-1 hover:outline-red-400"
                   to={`${PATH.MANGA.getTitlePath(manga?.id)}?name=${getFirstTitle(manga.attributes?.title)}`}
                   key={manga?.id}
                 >
@@ -58,9 +58,10 @@ const CardsList = ({ mangas, isFetching }: Props) => {
                   </div>
                 </Link>
               ))
-            : mangas?.data?.map(manga => (
+            : cardView &&
+              mangas?.data?.map(manga => (
                 <Link
-                  className="flex overflow-hidden border-1 border-gray-500 text-white"
+                  className="mt-1 flex overflow-hidden rounded-lg border-gray-500 text-white hover:outline hover:outline-1 hover:outline-red-400"
                   to={`${PATH.MANGA.getTitlePath(manga.id)}?name=${getFirstTitle(manga.attributes?.title)}`}
                   key={manga?.id}
                 >
@@ -80,13 +81,13 @@ const CardsList = ({ mangas, isFetching }: Props) => {
                     <div className="mr-[2px] flex flex-wrap pb-[5px]">
                       {manga.attributes?.tags?.slice(0, 4)?.map(tag => (
                         <div
-                          className="rounded-4xl border-2 border-gray-400 bg-transparent p-1 text-sm"
+                          className="rounded-4xl border rounded-xl border-gray-400 bg-transparent p-1 text-sm"
                           key={tag.id}
                         >
                           {tag.attributes?.name?.en}
                         </div>
                       ))}
-                      <div className="rounded-4xl border-2 border-gray-400 bg-transparent p-1 text-sm">
+                      <div className="rounded-4xl border-2 border-gray-400 rounded-xl bg-transparent p-1 text-sm">
                         {manga.attributes?.status}
                       </div>
                     </div>

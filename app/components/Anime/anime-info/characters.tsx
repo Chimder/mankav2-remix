@@ -1,11 +1,14 @@
 import { useState } from 'react'
 import DialogCharactersPeople from '~/components/characters-voices/dialog'
-import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '~/components/ui/accordion'
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from '~/components/ui/accordion'
 import { jikanAnimeApi } from '~/hooks/api/jikan/anime'
 import { CharacterImages } from '~/shared/api/jikan/generated'
 import { usePersoneStore } from '~/store/characters-people'
-
-
 
 export function getCharacterImg(img?: CharacterImages) {
   return img?.jpg?.image_url ?? undefined
@@ -24,8 +27,8 @@ const Characters = ({ id }: Props) => {
   const setPersone = usePersoneStore().setPersone
 
   const [isOpen, setIsOpen] = useState(false)
-  async function handlePerson(id: number) {
-    await setPersone(id, 'character')
+  function handlePerson(id: number) {
+    setPersone(id, 'character')
     setIsOpen(true)
   }
   console.log('IS', isOpen)
@@ -40,19 +43,19 @@ const Characters = ({ id }: Props) => {
   }
 
   return (
-    <div className="center m-1 flex-col border-1 border-yellow-800">
+    <div className="center rounded-lg border-1 bg-primary m-2 flex-col ">
       <h1 className="text-lg text-yellow-700">Characters</h1>
       <div className="">
         <ul className="center flex flex-wrap gap-2">
           {firstSixCharacters.map(character => (
             <div
-              className="flex w-32 flex-col items-center"
+              className="flex w-28 flex-col items-center"
               key={`${character.character?.name} six`}
               onClick={() =>
                 handlePerson(character.character?.mal_id as number)
               }
             >
-              <div className="mb-2 flex h-40 w-32 items-center justify-center overflow-hidden">
+              <div className="mb-2 flex h-38 w-28 items-center justify-center overflow-hidden">
                 <img
                   className="h-full w-full object-cover"
                   src={getCharacterImg(character.character?.images)}
@@ -79,13 +82,13 @@ const Characters = ({ id }: Props) => {
                 <ul className="center flex flex-wrap gap-2">
                   {restCharacters.map(character => (
                     <div
-                      className="flex w-32 flex-col items-center"
+                      className="flex w-28 flex-col items-center"
                       key={`${character.character?.name}rest`}
                       onClick={() =>
                         handlePerson(character.character?.mal_id as number)
                       }
                     >
-                      <div className="mb-2 flex h-40 w-32 items-center justify-center overflow-hidden">
+                      <div className="mb-2 flex h-38 w-28 items-center justify-center overflow-hidden">
                         <img
                           className="h-full w-full object-cover"
                           src={getCharacterImg(character.character?.images)}

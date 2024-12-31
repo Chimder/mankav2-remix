@@ -81,7 +81,7 @@ function Characters({ character, handleClose }: Props) {
           {character.anime?.map(manga => (
             <div
               key={manga.anime?.title}
-              className="group flex w-full flex-col items-center justify-between rounded-lg border border-border p-4 transition-colors hover:bg-accent/10 md:flex-row"
+              className="flex w-full flex-col items-center justify-between rounded-lg border border-border p-4 transition-colors hover:bg-accent/10 md:flex-row"
               onClick={() => handleAnimeName(manga.anime?.title)}
             >
               <label className="mb-2 flex cursor-pointer items-center space-x-4 md:mb-0">
@@ -91,7 +91,7 @@ function Characters({ character, handleClose }: Props) {
                   alt={manga.role}
                 />
                 <div>
-                  <div className="font-medium transition-colors group-hover:text-primary">
+                  <div className="font-medium transition-colors">
                     {manga.anime?.title}
                   </div>
                   <div className="text-muted-foreground">{manga.role}</div>
@@ -125,13 +125,13 @@ function Characters({ character, handleClose }: Props) {
         handleClose={handleClose}
         key={'DIALOG manga'}
       />
-      <div className="mt-6 w-full">
+      <div className="mt-6 w-full text-white">
         <h1 className="mb-4 text-xl font-semibold">Manga Roles</h1>
         <div className="space-y-4">
           {character.manga?.map(manga => (
             <div
               key={`${manga.manga?.title}mangaa`}
-              className="group flex w-full flex-col items-center justify-between rounded-lg border border-border p-4 transition-colors hover:bg-accent/10 md:flex-row"
+              className="flex w-full flex-col items-center justify-between rounded-lg border border-border p-4 transition-colors hover:bg-accent/10 md:flex-row"
             >
               <div
                 onClick={() => handleMangaName(manga.manga?.title)}
@@ -143,7 +143,7 @@ function Characters({ character, handleClose }: Props) {
                   alt={manga.manga?.title}
                 />
                 <div>
-                  <div className="cursor-pointer font-medium transition-colors group-hover:text-primary">
+                  <div className="cursor-pointer font-medium transition-colors">
                     {manga.manga?.title}
                   </div>
                   <div className="text-muted-foreground">{manga.role}</div>

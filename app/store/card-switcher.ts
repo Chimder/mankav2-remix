@@ -5,7 +5,7 @@ import { immer } from 'zustand/middleware/immer'
 import { createSelectors } from './create-Selectors'
 
 export type Card = {
-  type: 'boxes' | 'two'
+  type?: 'boxes' | 'two'
 }
 
 export type CardSwitcherAction = Card & {
@@ -15,7 +15,7 @@ export type CardSwitcherAction = Card & {
 export const CardSwitcherStore = create<CardSwitcherAction>()(
   persist(
     immer(set => ({
-      type: 'boxes',
+      type: undefined,
       setCardSwitcher: text => {
         set(state => {
           state.type = text

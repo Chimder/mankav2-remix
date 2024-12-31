@@ -9,7 +9,7 @@ export default function Header() {
   // return
   return (
     <div className="sticky top-0 z-50 h-[64px] w-full bg-black shadow-header">
-      <div className="center relative justify-between border-cyan-200 p-2">
+      <div className="center relative justify-between border-cyan-200 p-2 rounded-b-lg border-1">
         <div className="center flex-[1_1_33%]">
           <Link
             className="font-logo mr-10 list-none text-6xl text-cyan-300"

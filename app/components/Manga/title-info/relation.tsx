@@ -28,8 +28,8 @@ const Relation = () => {
   )
     return null
   return (
-    <div className="m-1 flex flex-col items-center border-1 border-yellow-800">
-      <h1>Relation Manga</h1>
+    <div className="flex flex-col items-center border-1 rounded-lg bg-primary m-2">
+      <h1 className='text-lg text-green-200'>Relation Manga</h1>
       <ul className="flex flex-row flex-wrap justify-center gap-3">
         {relations?.data?.map(manga => (
           <Link

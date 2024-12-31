@@ -30,7 +30,8 @@ const Cards = () => {
   const cardView = useCardSwitcherStore().type
   const setCardView = useCardSwitcherStore().setCardSwitcher
 
-  function selectCardFormat(value: typeof cardView) {
+  function selectCardFormat(value?: typeof cardView) {
+    if(!value) return
     setCardView(value)
   }
 

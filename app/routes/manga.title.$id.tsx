@@ -76,7 +76,7 @@ const MangaTitle = () => {
             <Info />
           </div>
         </div>
-        <div className="relative flex w-3/5 flex-col border border-green-400 text-white">
+        <div className="relative flex w-3/5 flex-col border bg-primary rounded-lg text-white">
           <div className="flex-grow overflow-y-auto">
             <Chapters />
           </div>

@@ -32,8 +32,8 @@ const Info = () => {
   const { data: manga } = mangaApi.useMangaByID(mangaId)
 
   return (
-    <section className="">
-      <div className="flex flex-col items-center justify-center border-[1px] border-green-400">
+    <section className="text-white">
+      <div className="flex rounded-lg border-1 bg-primary mx-2 flex-col items-center justify-center ">
         <img
           className="relative z-10 h-[440px] w-[310px]"
           src={getMangaImg(mangaId, manga?.data)}
@@ -42,8 +42,8 @@ const Info = () => {
         <div className="flex h-full">
           <div className="py-4">
             <div className="mx-0 my-3 text-sm">
-              <span className="mb-2.5 mr-1 text-sm">Title:</span>
-              <span className="text-base">{getMangaTitle(manga?.data)}</span>
+              {/* <span className="mb-2.5 mr-1 text-sm">Title:</span> */}
+              <span className="text-lg center text-blue-300">{getMangaTitle(manga?.data)}</span>
             </div>
             <div className="title">
               <span className="head">Created:</span>
@@ -62,7 +62,7 @@ const Info = () => {
 
             <div className="titleGenres">
               <span className="head">Status: </span>
-              <div className="rounded-4xl mb-1 ml-[2px] inline-block border-1 bg-transparent px-2 py-1 text-sm">
+              <div className="rounded-4xl mb-1 ml-[2px] rounded-2xl inline-block border-1 bg-transparent px-2 py-1 text-sm">
                 {manga?.data?.attributes?.status}
               </div>
             </div>
@@ -70,7 +70,7 @@ const Info = () => {
               <span className="head">Genres: </span>
               {manga?.data?.attributes?.tags?.slice(0, 5).map(tag => (
                 <div
-                  className="rounded-4xl mb-1 ml-[2px] inline-block border-1 bg-transparent px-2 py-1 text-sm"
+                  className="rounded-4xl rounded-2xl mb-1 ml-[2px] text-white inline-block border-1 bg-transparent px-2 py-1 text-sm"
                   key={tag.id}
                 >
                   {tag.attributes?.name?.en}
@@ -93,6 +93,7 @@ const Info = () => {
       <Characters />
       <Relation />
     </section>
+
   )
 }
 

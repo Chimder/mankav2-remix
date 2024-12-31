@@ -32,12 +32,8 @@ const Characters = () => {
 
   const [isOpen, setIsOpen] = useState(false)
 
-  async function handlePerson(id: number) {
-    const { id: currentId, type } = usePersoneStore.getState()
-    if (currentId === id && type === 'character') {
-      return
-    }
-    await setPersone(id, 'character')
+  function handlePerson(id: number) {
+    setPersone(id, 'character')
     setIsOpen(true)
   }
   // async function handlePerson(id: number) {
@@ -55,19 +51,19 @@ const Characters = () => {
   }
 
   return (
-    <div className="center m-1 flex-col border-1 border-yellow-800">
+    <div className="center m-2 flex-col rounded-lg border-1 bg-primary">
       <h1 className="text-lg text-yellow-700">Characters</h1>
       <div className="">
         <ul className="center flex flex-wrap gap-2">
           {firstSixCharacters.map(character => (
             <div
-              className="flex w-32 flex-col items-center"
+              className="flex w-28 flex-col items-center"
               key={`${character.character?.name} six`}
               onClick={() =>
                 handlePerson(character.character?.mal_id as number)
               }
             >
-              <div className="mb-2 flex h-40 w-32 items-center justify-center overflow-hidden">
+              <div className="h-38 mb-2 flex w-28 items-center justify-center overflow-hidden">
                 <img
                   className="h-full w-full object-cover"
                   src={getCharacterImg(character.character?.images)}
@@ -95,13 +91,13 @@ const Characters = () => {
                 <ul className="center flex flex-wrap gap-2">
                   {restCharacters.map(character => (
                     <div
-                      className="flex w-32 flex-col items-center"
+                      className="flex w-28 flex-col items-center"
                       key={`${character.character?.name}rest`}
                       onClick={() =>
                         handlePerson(character.character?.mal_id as number)
                       }
                     >
-                      <div className="mb-2 flex h-40 w-32 items-center justify-center overflow-hidden">
+                      <div className="h-38 mb-2 flex w-28 items-center justify-center overflow-hidden">
                         <img
                           className="h-full w-full object-cover"
                           src={getCharacterImg(character.character?.images)}

@@ -1,7 +1,7 @@
+/* eslint-disable jsx-a11y/media-has-caption */
 import React, { useEffect, useRef, useState } from 'react'
-import Hls from 'hls.js'
 import { Source, Track } from '~/hooks/api/aniwatch/types'
-
+import Hls from 'hls.js'
 
 interface VideoPlayerProps {
   sources?: Source[]
@@ -105,12 +105,13 @@ const VideoPlayer: React.FC<VideoPlayerProps> = ({
     <div className="relative aspect-video w-full bg-black">
       <video
         ref={videoRef}
-        className="h-full w-full"
+        className="h-full w-full rounded-sm border-none outline-none "
         controls
         crossOrigin="anonymous"
       >
         {captionTracks?.map((track, index) => (
           <track
+          className=''
             key={track.file}
             kind={track.kind}
             label={track.label}
